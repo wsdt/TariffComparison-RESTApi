@@ -57,7 +57,7 @@ namespace Wavect.TariffComparison.WebAPI
 #endif
 
             // Add database connection
-            _dbConnectionStr = Environment.ExpandEnvironmentVariables(Configuration.GetConnectionString(_dbContext));
+            _dbConnectionStr = Configuration.GetConnectionString(_dbContext);
             services.AddDbContext<TariffComparisonContext>(
               options => options.UseSqlServer(_dbConnectionStr));
 
