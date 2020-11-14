@@ -4,22 +4,13 @@ services:
   webapi:
     image: "wsdt/wavect_tariffcomparison_api"
     container_name: tariff_webapi
-    environment:
-        DB_HOST: db
-    networks:
-    - network_database
-
 
   # TRANSIENT DATABASE (no volumes) as this is just for testing
   db:
     image: "mcr.microsoft.com/mssql/server"
     container_name: tariff_db
-    networks:
-    - network_database
+    ports:
+    - "1433:1433"
     environment:
         SA_PASSWORD: "5mKKGzazgLcBXAQcP6WRvuywWfPqjPqbydH2UzkVeJKaZKrb7BFUrSSe9s2u"
         ACCEPT_EULA: "Y"
-
-networks:
-    network_database:
-        driver: bridge
