@@ -1,13 +1,13 @@
 version: '3.4'
 
 services:
-  wavect.tariffcomparison.webapi:
-    image: ${DOCKER_REGISTRY-}wavecttariffcomparisonwebapi
+  webapi:
+    image: "wsdt/wavect_tariffcomparison_api"
+    container_name: tariff_webapi
+    environment:
+        DB_HOST: db
     networks:
     - network_database
-    build:
-      context: .
-      dockerfile: Wavect.TariffComparison.WebAPI/Dockerfile
 
 
   # TRANSIENT DATABASE (no volumes) as this is just for testing
@@ -22,3 +22,4 @@ services:
 
 networks:
     network_database:
+        driver: bridge
