@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore ./Wavect.TariffComparison/Wavect.TariffComparison.sln  --verbosity detailed
+      run: dotnet restore ./Wavect.TariffComparison/Wavect.TariffComparison.sln  --verbosity normal
     - name: Build
       run: dotnet build  ./Wavect.TariffComparison/Wavect.TariffComparison.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test  ./Wavect.TariffComparison/Wavect.TariffComparison.sln --no-restore --verbosity detailed
+      run: dotnet test  ./Wavect.TariffComparison/Wavect.TariffComparison.sln --no-restore --verbosity normal
