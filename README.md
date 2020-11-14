@@ -1,4 +1,4 @@
-# TariffComparison-RESTApi
+# TariffComparison-RESTApi ![.NET Core](https://github.com/wsdt/TariffComparison-RESTApi/workflows/.NET%20Core%20Tests/badge.svg)
 
 
 ### Interfaces
