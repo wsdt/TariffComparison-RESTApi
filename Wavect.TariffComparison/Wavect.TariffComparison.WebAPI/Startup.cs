@@ -20,17 +20,19 @@ namespace Wavect.TariffComparison.WebAPI
     public class Startup
     {
         #region constants
+        private string _dbConnectionStr;
         private const string _dbContext = "TariffComparisonContext";
         #endregion
 
         #region properties
         public IConfiguration Configuration { get; }
+        private ILogger<Startup> _logger { get; set; }
         #endregion
 
         #region ctor
         public Startup(IConfiguration configuration)
         {
-            this.Configuration = configuration;
+            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
         #endregion
 
@@ -55,10 +57,9 @@ namespace Wavect.TariffComparison.WebAPI
 #endif
 
             // Add database connection
+            _dbConnectionStr = Environment.ExpandEnvironmentVariables(Configuration.GetConnectionString(_dbContext));
             services.AddDbContext<TariffComparisonContext>(
-              options => options.UseSqlServer(
-                  Environment.ExpandEnvironmentVariables(Configuration.GetConnectionString(_dbContext))
-                ));
+              options => options.UseSqlServer(_dbConnectionStr));
 
             // Enable ApiVersioning
             services.AddApiVersioning(v =>
@@ -72,8 +73,10 @@ namespace Wavect.TariffComparison.WebAPI
         /// <summary>
         /// Setting up webApi in corresponding environment.
         /// </summary>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogInformation($"Trying to establish database connection with '{_dbConnectionStr}'");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
