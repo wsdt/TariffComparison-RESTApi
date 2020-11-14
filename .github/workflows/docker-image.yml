@@ -26,5 +26,7 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     
-    - name: Push Docker image
-      run: docker push wsdt/wavect_tariffcomparison_api:$GITHUB_SHA_SHORT
+    - name: Push Docker images
+    - run: docker push wsdt/wavect_tariffcomparison_api:$GITHUB_SHA_SHORT
+    - run: docker tag wsdt/wavect_tariffcomparison_api:$GITHUB_SHA_SHORT wsdt/wavect_tariffcomparison_api:latest
+    - run: docker push wsdt/wavect_tariffcomparison_api
