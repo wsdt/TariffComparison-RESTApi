@@ -28,6 +28,7 @@ All routes are listed at `/swagger`. This route is disabled for release builds.
 6. Add more Tests
 7. Maybe use generic interface for persistence operations to easily switch underlying data storage
 8. Add Authentication & Authorization
+9. Make Docker-Compose File production ready (networks, volumes, maybe proxy, letsencrypt, ..)
 
 ### Interfaces
 I removed/skipped creating some interfaces for e.g. DTOs as I didn't had an explicit use-case in this project and think it would have been overengineered here. 
