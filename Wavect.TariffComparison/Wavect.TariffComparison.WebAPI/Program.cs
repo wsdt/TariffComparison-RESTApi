@@ -25,10 +25,6 @@ namespace Wavect.TariffComparison.WebAPI
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseLightInject(services => services.RegisterFrom<DependencyInjectionComposition>())
-                .ConfigureAppConfiguration((context, builder) =>
-                {
-                    builder.AddJsonFile("")
-                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
