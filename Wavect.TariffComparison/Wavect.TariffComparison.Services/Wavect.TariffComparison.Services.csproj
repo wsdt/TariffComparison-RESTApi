@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wavect.TariffComparison.DTOs\Wavect.TariffComparison.DTOs.csproj" />
+    <ProjectReference Include="..\Wavect.TariffComparison.GlobalConstants\Wavect.TariffComparison.GlobalConstants.csproj" />
+    <ProjectReference Include="..\Wavect.TariffComparison.Persistence\Wavect.TariffComparison.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

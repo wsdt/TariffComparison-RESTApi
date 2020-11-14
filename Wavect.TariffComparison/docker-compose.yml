@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  wavect.tariffcomparison.webapi:
+    image: ${DOCKER_REGISTRY-}wavecttariffcomparisonwebapi
+    networks:
+    - network_database
+    build:
+      context: .
+      dockerfile: Wavect.TariffComparison.WebAPI/Dockerfile
+
+
+  # TRANSIENT DATABASE (no volumes) as this is just for testing
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: tariff_db
+    networks:
+    - network_database
+    environment:
+        SA_PASSWORD: "5mKKGzazgLcBXAQcP6WRvuywWfPqjPqbydH2UzkVeJKaZKrb7BFUrSSe9s2u"
+        ACCEPT_EULA: "Y"
+
+networks:
+    network_database:

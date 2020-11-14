@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  # TRANSIENT DATABASE (no volumes) as this is just for testing
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: tariff_db_dev
+    # Publish port, to access with non dockerized IIS
+    ports:
+    - "1433:1433"
+    environment:
+        SA_PASSWORD: "5mKKGzazgLcBXAQcP6WRvuywWfPqjPqbydH2UzkVeJKaZKrb7BFUrSSe9s2u"
+        ACCEPT_EULA: "Y"
+
+networks:
+    network_database:
