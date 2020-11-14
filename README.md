@@ -7,13 +7,19 @@ The api is tested as well as the corresponding Docker-image is pushed to **[Dock
 The api is pushed to `wsdt/wavect_tariffcomparison_api` on [Dockerhub](https://hub.docker.com/repository/docker/wsdt/wavect_tariffcomparison_api).
 I've created a docker-compose file too, to also have a MSSQL-database in order to ensure that everything works as expected.
 
-Just execute `docker-compose up` in `Wavect.TariffComparison\`.
+If you are using Docker-Toolbox you may just need to execute `docker-compose up` in `Wavect.TariffComparison\`. Nevertheless, the connectionString is currently directly built into the api.
+
+Alternatively, you just have to do 3 things: 
+1. Run the database: `docker-compose -f docker-compose.dev.yml up`
+2. Change database host in `appsettings.Development.json`/`appsettings.json`.
+2.1. If you are using Docker Toolbox execute `docker-machine ip` to get the database host.
+2.2. For Docker-Desktop you can use localhost.
+3. Run IIS as usual.
 
 Please note, that the database is **transient** as we have no write-operations in the api at the moment and who doesn't like a clean drive :-).
 
 ### ApiVersion
 In my experience nothing is more painful than changing your ERM or project structure. Therefore, adding support for ApiVersions might seem over-engineered now, but can save a lot of resources in the long run as introducing this later might become increasingly complex/messy. 
-
 
 ### Swagger
 All routes are listed at `/swagger`. This route is disabled for release builds.
@@ -29,6 +35,9 @@ All routes are listed at `/swagger`. This route is disabled for release builds.
 7. Maybe use generic interface for persistence operations to easily switch underlying data storage
 8. Add Authentication & Authorization
 9. Make Docker-Compose File production ready (networks, volumes, maybe proxy, letsencrypt, ..)
+10. Add HealthCheck to Docker-Compose file
+11. General error handling concept (Security)
+12. Make images configurable via environment variables (e.g. DB_HOST, ...)
 
 ### Interfaces
 I removed/skipped creating some interfaces for e.g. DTOs as I didn't had an explicit use-case in this project and think it would have been overengineered here. 
