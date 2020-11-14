@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - name: GitHub Environment Variables Action
+      uses: FranzDiebold/github-env-vars-action@v1.2.1
+          
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build Wavect.TariffComparison/. --file Wavect.TariffComparison/Wavect.TariffComparison.WebAPI/Dockerfile --tag wsdt/wavect_tariffcomparison_api:$GITHUB_SHA_SHORT
+    
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    - name: Push Docker images
+      run: |
+        docker push wsdt/wavect_tariffcomparison_api:$GITHUB_SHA_SHORT 
+        docker tag wsdt/wavect_tariffcomparison_api:$GITHUB_SHA_SHORT wsdt/wavect_tariffcomparison_api:latest
+        docker push wsdt/wavect_tariffcomparison_api
