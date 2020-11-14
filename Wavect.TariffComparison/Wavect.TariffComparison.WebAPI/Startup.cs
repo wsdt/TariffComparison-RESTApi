@@ -75,6 +75,7 @@ namespace Wavect.TariffComparison.WebAPI
         /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogInformation($"IsDevelopmentBuild: {env.IsDevelopment()}");
             logger.LogInformation($"Trying to establish database connection with '{_dbConnectionStr}'");
 
             if (env.IsDevelopment())
