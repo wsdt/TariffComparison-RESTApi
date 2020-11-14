@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build Wavect.TariffComparison/Wavect.TariffComparison.WebAPI/. --file Wavect.TariffComparison/Wavect.TariffComparison.WebAPI/Dockerfile --tag wsdt/wavect_tariffcomparison_api:$(date +%s)
+      run: docker build Wavect.TariffComparison/. --file Wavect.TariffComparison/Wavect.TariffComparison.WebAPI/Dockerfile --tag wsdt/wavect_tariffcomparison_api:$(date +%s)
     
     - name: Login to DockerHub
       uses: docker/login-action@v1
