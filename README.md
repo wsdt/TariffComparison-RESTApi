@@ -21,7 +21,7 @@ Please note, that the database is **transient** as we have no write-operations i
 ### ApiVersion
 In my experience nothing is more painful than changing your ERM or project structure. Therefore, adding support for ApiVersions might seem over-engineered now, but can save a lot of resources in the long run as introducing this later might become increasingly complex/messy. 
 
-Current api-version is 1.0. This means you can call versionized routes via e.g. `/api/v1.0/` or `/api/v1`
+Current api-version is 1.0. This means you can call versionized routes via e.g. `/api/v1.0` or `/api/v1`
 
 ### Swagger
 All routes are listed at `/swagger`. This route is disabled for release builds.
