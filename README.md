@@ -36,10 +36,14 @@ All routes are listed at `/swagger`. This route is disabled for release builds.
 6. Add more Tests
 7. Maybe use generic interface for persistence operations to easily switch underlying data storage
 8. Add Authentication & Authorization
-9. Make Docker-Compose File production ready (networks, volumes, maybe proxy, letsencrypt, ..)
-10. Add HealthCheck to Docker-Compose file
+9. Make Docker-Compose File production ready (networks, volumes, maybe proxy, letsencrypt [valid certificate], ..)
+10. Add HealthCheck to Docker-Compose file (e.g. automatic restart, slack/discord notification, ...)
 11. General error handling concept (Security)
 12. Make images configurable via environment variables (e.g. DB_HOST, ...)
+13. Add Api Rate-Limiting
+14. Logging & Analytics: E.g. push to Firebase and visualize data with Grafana
+15. Add stricter CORS ruleset (esp. if used from UI later, ..)
+
 
 ### Interfaces
 I removed/skipped creating some interfaces for e.g. DTOs as I didn't had an explicit use-case in this project and think it would have been overengineered here. 
