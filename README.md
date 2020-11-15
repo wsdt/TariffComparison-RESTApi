@@ -1,4 +1,4 @@
-# TariffComparison-RESTApi ![.NET Core](https://github.com/wsdt/TariffComparison-RESTApi/workflows/.NET%20Core%20Tests/badge.svg) ![Docker Image CI](https://github.com/wsdt/TariffComparison-RESTApi/workflows/Docker%20Image%20CI/badge.svg)
+# TariffComparison-RESTApi ![.NET Core](https://github.com/wsdt/TariffComparison-RESTApi/workflows/.NET%20Core%20Tests/badge.svg) ![Docker Image CI](https://github.com/wsdt/TariffComparison-RESTApi/workflows/Docker%20Image%20CI/badge.svg) [![HitCount](http://hits.dwyl.com/wsdt/TariffComparison-RESTApi.svg)](http://hits.dwyl.com/wsdt/TariffComparison-RESTApi) [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors) [![GitHub license](https://img.shields.io/github/license/wsdt/TariffComparison-RESTApi.svg)](https://github.com/wsdt/TariffComparison-RESTApi/blob/master/LICENSE) [![Generic badge](https://img.shields.io/badge/Made%20with-CSharp-37f)](https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/) [![Donate](https://img.shields.io/badge/Donate-Pay%20me%20a%20coffee-3cf)](https://github.com/wsdt/Global/wiki/Donation)
 
 ## Get Started
 The api is tested as well as the corresponding Docker-image is pushed to **[Dockerhub](https://hub.docker.com/repository/docker/wsdt/wavect_tariffcomparison_api)** via Github-Actions (see badges above). 
@@ -12,14 +12,16 @@ If you are using Docker-Toolbox you may just need to execute `docker-compose up`
 Alternatively, you just have to do 3 things: 
 1. Run the database: `docker-compose -f docker-compose.dev.yml up`
 2. Change database host in `appsettings.Development.json`/`appsettings.json`.
-2.1. If you are using Docker Toolbox execute `docker-machine ip` to get the database host.
-2.2. For Docker-Desktop you can use localhost.
+* If you are using Docker Toolbox execute `docker-machine ip` to get the database host.
+* For Docker-Desktop you can use localhost.
 3. Run IIS as usual.
 
 Please note, that the database is **transient** as we have no write-operations in the api at the moment and who doesn't like a clean drive :-).
 
 ### ApiVersion
 In my experience nothing is more painful than changing your ERM or project structure. Therefore, adding support for ApiVersions might seem over-engineered now, but can save a lot of resources in the long run as introducing this later might become increasingly complex/messy. 
+
+Current api-version is 1.0. This means you can call versionized routes via e.g. `/api/v1.0` or `/api/v1`
 
 ### Swagger
 All routes are listed at `/swagger`. This route is disabled for release builds.
