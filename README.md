@@ -7,10 +7,10 @@ The api is tested as well as the corresponding Docker-image is pushed to **[Dock
 The api is pushed to `wsdt/wavect_tariffcomparison_api` on [Dockerhub](https://hub.docker.com/repository/docker/wsdt/wavect_tariffcomparison_api).
 I've created a docker-compose file too, to also have a MSSQL-database in order to ensure that everything works as expected.
 
-If you are using Docker-Toolbox you may just need to execute `docker-compose up` in `Wavect.TariffComparison\`. Nevertheless, the connectionString is currently directly built into the api.
+The connectionString is currently directly built into the api, as I honestly just ran out of time, so if you are not using Docker-Toolbox (same docker-machine ip) this image might not work for you. 
 
 Alternatively, you just have to do 3 things: 
-1. Run the database: `docker-compose -f docker-compose.dev.yml up`
+1. Run the database: `docker-compose -f docker-compose.yml up`
 2. Change database host in `appsettings.Development.json`/`appsettings.json`.
 * If you are using Docker Toolbox execute `docker-machine ip` to get the database host.
 * For Docker-Desktop you can use localhost.
