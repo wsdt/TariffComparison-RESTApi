@@ -43,7 +43,7 @@ All routes are listed at `/swagger`. This route is disabled for release builds.
 13. Add Api Rate-Limiting
 14. Logging & Analytics: E.g. push to Firebase and visualize data with Grafana
 15. Add stricter CORS ruleset (esp. if used from UI later, ..)
-
+16. Enhance data model, but enough for current use-case.
 
 ### Interfaces
 I removed/skipped creating some interfaces for e.g. DTOs as I didn't had an explicit use-case in this project and think it would have been overengineered here. 
